@@ -1,15 +1,7 @@
-{
-  "compilerOptions": {
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-  },
+{ // [ ! ] за include и compilerOptions теперь отвечают дочерние конфиги
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
-  "include" : ["src"]
+  ]
 }

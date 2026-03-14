@@ -3,20 +3,34 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2023",
     "useDefineForClassFields": true,
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "lib": ["ES2023", "DOM", "DOM.Iterable"], // DOM for React
     "module": "ESNext",
     "types": ["vite/client"],
     "skipLibCheck": true,
 
-    /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
+    // "allowImportingTsExtensions": true,
+    // ^> due to "noEmit": false >>>
+    "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+
+    // >*
+    "composite": true, // для референса
+    "noEmit": false, // если ^, автоматически недоступ.
+    // >>>
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    // ген.-рит толкьо types, не трогая JS (no conflict)
+
+    // Path settings (Aliases) [ ! ]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+
     "jsx": "react-jsx",
 
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
