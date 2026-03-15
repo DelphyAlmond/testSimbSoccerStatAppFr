@@ -10,7 +10,7 @@ import prettierConfig from 'eslint-config-prettier';
 export default defineConfig([
   { ignores: ['dist', 'node_modules', 'build'] },
   js.configs.recommended,
-  ...tseslint.configs.recommended, // >[] 
+  ...tseslint.configs.recommended,
   {
     languageOptions: {
       ecmaVersion: 2020,
@@ -27,7 +27,7 @@ export default defineConfig([
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      'prettier': prettierPlugin // >Prettier
+      'prettier': prettierPlugin
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -35,7 +35,6 @@ export default defineConfig([
         'warn',
         { allowConstantExport: true }
       ],
-      // Prettier>
       'prettier/prettier': 'error',
       'no-console': 'warn'
     },

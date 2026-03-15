@@ -8,9 +8,9 @@ import App from './App'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 8, // [ * ] длительность актуальности: 8 мин.
-      retry: 1, // без повторных запросов, если ошибка
-      refetchOnWindowFocus: false, // смена вкладок - откл. лишние
+      staleTime: 1000 * 60 * 8,
+      retry: 1, // ~repeat
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -23,9 +23,3 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </QueryClientProvider>
   </React.StrictMode>,
 );
-
-//createRoot(document.getElementById('root')!).render(
-//  <StrictMode>
-//    <App />
-//  </StrictMode>,
-//)

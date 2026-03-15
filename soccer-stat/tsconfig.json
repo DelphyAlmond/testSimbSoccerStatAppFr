@@ -1,4 +1,4 @@
-{ // [ ! ] за include и compilerOptions теперь отвечают дочерние конфиги
+{
   "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },

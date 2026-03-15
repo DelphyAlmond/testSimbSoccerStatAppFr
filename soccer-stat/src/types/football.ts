@@ -1,4 +1,4 @@
-// Common (всеобщ.)
+// Общ.
 export interface Area {
   id: number;
   name: string;
@@ -6,7 +6,7 @@ export interface Area {
   flag: string | null;
 }
 
-// for Leagues (~Competitions) *2
+// Лиги (4.2)
 export interface Competition {
   id: number;
   area: Area;
@@ -23,7 +23,7 @@ export interface CompetitionsResponse {
   competitions: Competition[];
 }
 
-// for Teams 3*
+// Команды (4.3)
 export interface Team {
   id: number;
   name: string;
@@ -41,6 +41,7 @@ export interface TeamsResponse {
   teams: Team[];
 }
 
+// Матч (4.4)
 export interface Match {
   id: number;
   utcDate: string; // converting to local time (3.3) further(later)
@@ -65,10 +66,7 @@ export interface MatchScore {
   penalties: MatchScoreValue;
 }
 
-// Calendar (~Matches) 4*
 export interface MatchScoreValue {
   home: number | null;
   away: number | null;
 }
-
-// далее - неоьходимо внести в soccerstatService.ts [ !!! ]

@@ -4,17 +4,15 @@
     "target": "ES2023",
     "lib": ["ES2023"],
     "module": "ESNext",
-    "types": ["node"], // for config.-s
+    "types": ["node"],
     "skipLibCheck": true,
 
     "moduleResolution": "bundler",
-    // "allowImportingTsExtensions": true, > due to "noEmit": false >>>
-    // "verbatimModuleSyntax": true,
     "moduleDetection": "force",
 
     // >*
-    "composite": true, // для референса
-    "noEmit": false, // если ^, автоматически недоступ.
+    "composite": true,
+    "noEmit": false,
 
     "jsx": "react-jsx",
 
