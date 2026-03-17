@@ -32,24 +32,25 @@ const Teams = () => {
 
             <h1>Команды</h1>
 
-            {/* >> Поиск по командам */}
             <div className="filters">
                 <input 
-                type="text" 
-                placeholder="Поиск команды..." 
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                    type="text" 
+                    className="search-input"
+                    placeholder="Поиск команды..." 
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
             </div>
 
             <div className="teams-grid">
                 {filteredTeams?.map(team => (
-                <div key={team.id} className="team-card">
-                    <Link to={`/teams/${team.id}/matches`}>
-                    <img src={team.crest} alt={team.name} width="40" />
-                    <span>{team.name}</span>
-                    </Link>
-                </div>
+                    <div key={team.id} className="team-card"> {/* > карточка */}
+                        <Link to={`/teams/${team.id}/matches`}>
+                            <img src={team.crest} alt={team.name} width="40" />
+                            <span>{team.name}</span>
+                            {/* > только название */}
+                        </Link>
+                    </div>
                 ))}
             </div>
         </div>

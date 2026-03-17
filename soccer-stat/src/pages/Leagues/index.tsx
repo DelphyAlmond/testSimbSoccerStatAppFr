@@ -21,25 +21,18 @@ const Leagues = () => {
     );
 
     return (
-        <div className="page-container">
-            <nav className="breadcrumbs">
-                <span className="current-page">Лиги</span>
-            </nav>
-
-            <h1>Лиги</h1>
-            
-            <div className="leagues-grid">
-                {data?.competitions.map((league) => (
-                <div key={league.id} className="league-card">
-                    {/* Link: календарь конкретной лиги*/}
+        <div className="leagues-grid">
+            {data?.competitions.map((league) => (
+                <div key={league.id} className="league-card"> {/* > карточка */}
                     <Link to={`/leagues/${league.id}/matches`}>
-                    <img src={league.emblem} alt={league.name} width="50" />
-                    <span>{league.name}</span>
-                    <p>{league.area.name}</p>
+                        <div className="card-image-wrapper"> {/* > обертка для фото */}
+                            <img src={league.emblem} alt={league.name} width="50" />
+                        </div>
+                        <span>{league.name}</span>
+                        <p>{league.area.name}</p>
                     </Link>
                 </div>
-                ))}
-            </div>
+            ))}
         </div>
     );
 };

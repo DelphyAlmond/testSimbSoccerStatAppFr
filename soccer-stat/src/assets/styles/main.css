@@ -1,0 +1,244 @@
+/* global */
+:root {
+  --fifa-blue: #0052cc;
+  --bg-gray: #f0f2f5;
+  --text-main: #333;
+  --text-gray: #888;
+  --white: #ffffff;
+  --border-color: #ddd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-gray);
+  color: var(--text-main);
+}
+
+/* Навигация */
+.header {
+  background-color: var(--white);
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 20px;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between; /* Лого слева, табы справа */
+  align-items: center;
+}
+
+.logo {
+  color: var(--fifa-blue);
+  font-weight: 800;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+.nav-tabs {
+  display: flex;
+  height: 100%;
+}
+
+.tab {
+  text-decoration: none;
+  color: var(--text-main);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* nav-block-(active) */
+.tab.active {
+  color: var(--fifa-blue);
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--fifa-blue);
+}
+
+/* Контейнер страницы (<< прижато влево) */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Хлебные крошки */
+.breadcrumbs {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.breadcrumbs a {
+  color: var(--fifa-blue);
+  text-decoration: none;
+}
+
+.breadcrumbs .separator {
+  margin: 0 8px;
+  color: var(--text-gray);
+}
+
+.breadcrumbs .current-page {
+  color: var(--text-gray);
+}
+
+/* Поисковая строка и фильтры */
+.filters {
+  margin-bottom: 40px;
+  display: flex;
+  gap: 12px;
+}
+
+.filters input {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  width: 300px;
+  background: var(--white);
+}
+
+.filters button {
+  background-color: var(--fifa-blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Сетка карточек */
+.leagues-grid, .teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+/* Карточки (квадратек) */
+.league-card, .team-card {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.league-card:hover, .team-card:hover {
+  transform: translateY(-3px);
+}
+
+.league-card a, .team-card a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.league-card img, .team-card img {
+  margin-bottom: 15px;
+  object-fit: contain;
+}
+
+.league-card span, .team-card span {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.league-card p {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin: 0;
+}
+
+/* Список матчей */
+.matches-list {
+  width: 100%;
+  background: var(--white);
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.match-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 100px;
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  align-items: center;
+}
+
+.match-row:last-child {
+  border-bottom: none;
+}
+
+/* Пагинация */
+.pagination {
+  margin-top: 50px;
+  display: flex;
+  gap: 5px;
+  align-self: center;
+}
+
+.page-num, .page-arrow {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  color: var(--fifa-blue);
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.page-num.active {
+  background-color: var(--fifa-blue);
+  color: var(--white);
+  border-color: var(--fifa-blue);
+}
+
+.page-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Сообщения об ошибках */
+.error-message {
+  color: #d32f2f;
+  padding: 20px;
+  border: 1px solid #ffcdd2;
+  background: #ffebee;
+  border-radius: 4px;
+  margin: 20px 0;
+}
