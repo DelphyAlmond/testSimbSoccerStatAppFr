@@ -1,43 +1,63 @@
 import apiInstance from './client';
 
-export const footballService = {
-  getCompetitions: async () => {
-    const { data } = await apiInstance.get('/competitions');
+import type { 
+  CompetitionsResponse, 
+  TeamsResponse, 
+  MatchesResponse, 
+  Team 
+} from '@/types/football';
+
+// step 3 : «сырой» JavaScript код -> строго типизированный сервис
+
+export const soccerstatService = {
+  // тип возвращаемого объ.-та ⤵ явно.
+  getCompetitions: async () : Promise<CompetitionsResponse> => {
+    const { data } = await apiInstance.get<CompetitionsResponse>('/competitions');
     return data;
   },
 
-  getLeagueMatches: async (id: string, dateFrom?: string, dateTo?: string) => {
-    const params = dateFrom && dateTo ? { dateFrom, dateTo } : {};
-    const { data } = await apiInstance.get(`/competitions/${id}/matches`, { params });
+  getLeagueMatches: async (id: string, dateFrom?: string, dateTo?: string)
+    : Promise<MatchesResponse> => {
+    // empty properties
+    let params = {};
+    // (с предыдущ.)
+    if (dateFrom && dateTo) {
+      const trimmedDateFrom = new Date(dateFrom.trim());
+      const trimmedDateTo = new Date(dateTo.trim());
+
+      if (trimmedDateFrom < trimmedDateTo) {
+        params = { dateFrom, dateTo };
+      }
+    }
+    const { data } = await apiInstance.get<MatchesResponse>(`/competitions/${id}/matches`, { params });
     return data;
   },
 
-  getTeams: async () => {
-    const { data } = await apiInstance.get('/teams');
+  getTeams: async () : Promise<TeamsResponse> => {
+    const { data } = await apiInstance.get<TeamsResponse>('/teams');
     return data;
   },
 
-  getTeamDetails: async (teamId: string) => {
-    const { data } = await apiInstance.get(`/teams/${teamId}`);
-    return {
-      name: data.name,
-      crestUrl: data.crest,
-    };
+  getTeamDetails: async (teamId: string): Promise<Team> => {
+    const { data } = await apiInstance.get<Team>(`/teams/${teamId}`);
+    return data;
   },
 
   getTeamMatches: async (
     teamId: string,
     dateFrom?: string,
     dateTo?: string
-  ) => {
+  ) : Promise<MatchesResponse> => {
     const params = dateFrom && dateTo ? { dateFrom, dateTo } : {};
-    const { data } = await apiInstance.get(`/teams/${teamId}/matches`, {
+    const { data } = await apiInstance.get<MatchesResponse>(`/teams/${teamId}/matches`,
+    {
       params,
     });
-    return {
-      matches: data.matches,
-      count: data.count,
-    };
+    // Возвращаемый полный MatchesResponse
+    // (включает matches: data.matches, и count: data.count из исзх.-ка:
+    return data;
   },
 
 };
+
+// [ note ] https://www.youtube.com/watch?v=GGli3uBqUts ~2:24:..

@@ -1,4 +1,5 @@
-// Общ.
+// Интерфейсы, <T>
+// Базов. 
 export interface Area {
   id: number;
   name: string;
@@ -9,7 +10,7 @@ export interface Area {
 // Лиги (4.2)
 export interface Competition {
   id: number;
-  area: Area;
+  area: Area; // [x] any;
   name: string;
   code: string;
   type: string;

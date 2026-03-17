@@ -9,7 +9,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 1000 * 60 * 8,
-      retry: 1, // ~repeat
+      retry: 1, // ~repeat : устранение влияния превышения лимитов
       refetchOnWindowFocus: false,
     },
   },
