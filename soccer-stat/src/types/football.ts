@@ -10,7 +10,7 @@ export interface Area {
 // Лиги (4.2)
 export interface Competition {
   id: number;
-  area: Area; // [x] any;
+  area: Area;
   name: string;
   code: string;
   type: string;
@@ -45,7 +45,7 @@ export interface TeamsResponse {
 // Матч (4.4)
 export interface Match {
   id: number;
-  utcDate: string; // converting to local time (3.3) further(later)
+  utcDate: string;
   status: 'SCHEDULED' | 'LIVE' | 'IN_PLAY' | 'PAUSED' | 'FINISHED' | 'POSTPONED' | 'SUSPENDED' | 'CANCELED';
   matchday: number;
   homeTeam: Pick<Team, 'id' | 'name' | 'shortName' | 'tla' | 'crest'>;
@@ -55,9 +55,10 @@ export interface Match {
 
 export interface MatchesResponse {
   count: number;
-  competition: Competition;
+  competition: Competition; // ^ comp.-nId (* App.tsz)
   matches: Match[];
-}
+} // [ ! ] end-point return календаря лиг
+// > объект, с объектом competition и массивом matches
 
 export interface MatchScore {
   winner: string | null;

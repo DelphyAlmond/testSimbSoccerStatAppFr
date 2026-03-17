@@ -9,14 +9,14 @@ import MainLayout from '@/component/BaseLayout';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />, // Обертка : hat + nav
+    element: <MainLayout />,
     children: [
       {
         index: true,
         element: <Leagues />,
       },
       {
-        path: 'leagues/:competitionId', // Dynamic rout для календаря лиг
+        path: 'leagues/:competitionId', // (* foolbal.ts)
         element: <LeagueMatches />,
       },
       {
@@ -24,12 +24,12 @@ const router = createBrowserRouter([
         element: <Teams />,
       },
       {
-        path: 'teams/:teamId/matches', // D.r. для календаря команд
+        path: 'teams/:teamId/matches',
         element: <TeamMatches />,
       },
       {
         path: '*',
-        element: <Navigate to="/" replace />, // redirect -> main page
+        element: <Navigate to="/" replace />,
       },
     ],
   },
