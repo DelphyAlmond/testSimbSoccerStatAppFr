@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css'
 import App from './App'
+import './assets/styles/main.css'
 
 const queryClient = new QueryClient({
   defaultOptions: {
